@@ -7,8 +7,26 @@
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+html,
 body {
+	height: 100%;
 	background: #000;
+}
+
+#root {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.tweet-settings {
+	flex: 1;
+	color: #fff;
+	border-right: solid 1px #ddd;
+}
+
+.tweet-container {
+	padding: 0 50px;
 }
 
 .tweet {
