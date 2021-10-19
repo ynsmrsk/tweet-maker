@@ -20,9 +20,18 @@ body {
 }
 
 .tweet-settings {
-	flex: 1;
+	flex: 1; // make this element cover the available space
 	color: #fff;
-	border-right: solid 1px #ddd;
+	border-right: solid 1px #2f3336;
+	height: 100%;
+	padding: 25px;
+	h3 {
+		font-size: 24px;
+		font-weight: normal;
+		border-bottom: 1px solid #2f3336;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+	}
 }
 
 .tweet-container {
