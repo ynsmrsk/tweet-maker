@@ -12,7 +12,7 @@ function App() {
   return (
 		<>
 			<div class="tweet-settings">
-				settings
+				<h3>Tweet Settings</h3>
 			</div>
 			<div class="tweet-container">
 				<div className="tweet">
