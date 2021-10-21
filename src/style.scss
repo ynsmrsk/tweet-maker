@@ -44,9 +44,9 @@ body {
 		border-bottom: 1px solid #2f3336;
 		padding: 10px 0 15px;
 		color: #fff;
+		font-size: 15px;
 		&::placeholder {
 			color: #fff;
-			font-size: 15px;
 		}
 		&:focus {
 			border-color: #4e555a;
@@ -58,9 +58,11 @@ body {
 		border-bottom: 1px solid #2f3336;
 		padding: 10px 0 15px;
 		color: #fff;
+		font-size: 15px;
+		line-height: 1.5;
+		resize: none;
 		&::placeholder {
 			color: #fff;
-			font-size: 15px;
 		}
 		&:focus {
 			border-color: #4e555a;
@@ -112,6 +114,9 @@ body {
 			color: #fff;
 			// don't overflow and	skip to bottom line
 			overflow-wrap: break-word;
+			span {
+				color: #1da1f2;
+			}
 		}
 	}
 	&-stats {
