@@ -8,13 +8,22 @@ import {
 	VerifiedIcon
 } from './icons'
 
-const formatTweet = tweet => tweet
+const formatTweet = tweet => {
+	// Select mentions (eg: @Ynsmrska) and place it in span so we can add styles to it.
+	tweet = tweet
+		.replace(/@([\w]+)/g, "<span>@$1</span>")
+	// Same with hashtags with paying attention to Turkish characters.
+		.replace(/#([\wşçöüğıİ]+)/gi, "<span>#$1</span>")
+	// And links.
+		.replace(/(https?:\/\/[\w\.\/]+)/, "<span>$1</span>")
+	return tweet
+}
 
 function App() {
 	const [name, setName] = useState()
 	const [username, setUsername] = useState()
 	const [isVerified, setIsVerified] = useState(false)
-	const [tweet, setTweet] = useState("This is a #testtweet by @Ynsmrska")
+	const [tweet, setTweet] = useState("Tweet...")
 	const [avatar, setAvatar] = useState()
 	const [retweets, setRetweets] = useState(0)
 	const [quoteTweets, setquoteTweets] = useState(0)
@@ -68,7 +77,16 @@ function App() {
 						</div>
 					</div>
 					<div className="tweet-content">
-						<p>{tweet && formatTweet(tweet) || "Fake tweet goes here"}</p>
+						{/* After putting string inside of a <span> element in regex (formatTweet)
+						we need to tell to react, the span text is not string but an HTML element.
+						*/}
+						{/* Inject HTML element */}
+						<p
+							dangerouslySetInnerHTML={{
+								__html:
+									tweet && formatTweet(tweet) || "Fake tweet goes here..."
+							}}
+						/>
 					</div>
 					<div className="tweet-stats">
 						<span>
