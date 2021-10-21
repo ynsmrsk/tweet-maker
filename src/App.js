@@ -23,10 +23,10 @@ function App() {
 	const [name, setName] = useState()
 	const [username, setUsername] = useState()
 	const [isVerified, setIsVerified] = useState(false)
-	const [tweet, setTweet] = useState("Tweet...")
+	const [tweet, setTweet] = useState("Sample fake tweet.")
 	const [avatar, setAvatar] = useState()
 	const [retweets, setRetweets] = useState(0)
-	const [quoteTweets, setquoteTweets] = useState(0)
+	const [quoteTweets, setQuoteTweets] = useState(0)
 	const [likes, setLikes] = useState(0)
 
   return (
@@ -35,31 +35,58 @@ function App() {
 				<h3>Tweet Settings</h3>
 				<ul>
 					<li>
+						<label>Name Surname</label>
 						<input
 							type="text"
 							className="input"
-							placeholder="Name Surname"
 							value={name}
 							onChange={e => setName(e.target.value)}
 						/>
 					</li>
 					<li>
+						<label>Username</label>
 						<input
 							type="text"
 							className="input"
-							placeholder="Username"
 							value={username}
 							onChange={e => setUsername(e.target.value)}
 						/>
 					</li>
 					<li>
+						<label>Tweet</label>
 						<textarea
 							type="text"
 							className="textarea"
 							maxLength="290"
-							placeholder="Tweet..."
 							value={tweet}
 							onChange={e => setTweet(e.target.value)}
+						/>
+					</li>
+					<li>
+						<label>Retweets</label>
+						<input
+							type="number"
+							className="input"
+							value={retweets}
+							onChange={e => setRetweets(e.target.value)}
+						/>
+					</li>
+					<li>
+						<label>Quote Tweets</label>
+						<input
+							type="number"
+							className="input"
+							value={quoteTweets}
+							onChange={e => setQuoteTweets(e.target.value)}
+						/>
+					</li>
+					<li>
+						<label>Likes</label>
+						<input
+							type="number"
+							className="input"
+							value={likes}
+							onChange={e => setLikes(e.target.value)}
 						/>
 					</li>
 				</ul>
