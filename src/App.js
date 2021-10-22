@@ -19,6 +19,26 @@ const formatTweet = tweet => {
 	return tweet
 }
 
+const formatNumber = number => {
+	if (!number)
+		number = 0
+	if (number < 1000)
+		return number
+	number /= 1000
+	// Tweets has not "." but "," so we turn this number into a string and replace "." with ","
+	// First we need to split this number into two from "."
+	number = String(number).split('.')
+
+	// After here a number like 1478 is now an array and the first element is thousand part and second
+	// element is decimal part (eg: 1478 -> 1.478 -> 1 and 478 => (number[0] is 1 and number[1] is 478))
+
+	// Then we return this array as needed.
+	//return number[0] + ',' + number[1]
+	return (
+		number[0] + (number[1] > 100 ? ',' + number[1].slice(0, 1) + ' B' : ' B')
+	)
+}
+
 function App() {
 	const [name, setName] = useState()
 	const [username, setUsername] = useState()
@@ -117,13 +137,13 @@ function App() {
 					</div>
 					<div className="tweet-stats">
 						<span>
-							<b>{retweets}</b> Retweets
+							<b>{formatNumber(retweets)}</b> Retweets
 						</span>
 						<span>
-							<b>{quoteTweets}</b> Quote Tweets
+							<b>{formatNumber(quoteTweets)}</b> Quote Tweets
 						</span>
 						<span>
-							<b>{likes}</b> Likes
+							<b>{formatNumber(likes)}</b> Likes
 						</span>
 					</div>
 					<div className="tweet-actions">
