@@ -83,6 +83,14 @@ function App() {
 						/>
 					</li>
 					<li>
+						<label>Avatar</label>
+						<input
+							type="file"
+							className="input"
+							onChange={handleAvatar}
+						/>
+					</li>
+					<li>
 						<label>Retweets</label>
 						<input
 							type="number"
@@ -109,12 +117,13 @@ function App() {
 							onChange={e => setLikes(e.target.value)}
 						/>
 					</li>
+					<button>Generate</button>
 				</ul>
 			</div>
 			<div class="tweet-container">
 				<div className="tweet">
 					<div className="tweet-author">
-						<img src="https://pbs.twimg.com/profile_images/1224815494479458307/ni00-6u1_normal.jpg" alt="Profile photo" />
+						{avatar ? <img src={avatar} alt="Profile photo" /> : <AvatarLoader />}
 						<div>
 							<div className="name">
 								{name || "Name Surname"}
