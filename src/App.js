@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './style.scss'
+import { AvatarLoader } from './loaders'
 import {
 	ReplyIcon,
 	RetweetIcon,
@@ -48,6 +49,20 @@ function App() {
 	const [retweets, setRetweets] = useState(0)
 	const [quoteTweets, setQuoteTweets] = useState(0)
 	const [likes, setLikes] = useState(0)
+
+	const handleAvatar = e => {
+		// const file = document.getElementById('input').files[0]
+		const file = e.target.files[0]
+		/* we establish the FileReader to handle asynchronously
+		loading the image and attaching it to the img element. */
+		const reader = new FileReader()
+		reader.addEventListener('load', function() {
+			setAvatar(this.result)
+		})
+		/* After creating the new FileReader object, we set up its onload function
+		and then call readAsDataURL() to start the read operation in the background. */
+		reader.readAsDataURL(file)
+	}
 
   return (
 		<>
