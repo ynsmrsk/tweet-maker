@@ -58,6 +58,16 @@ body {
 			border-color: #4e555a;
 		}
 	}
+	button {
+		width: 100%;
+		height: 40px;
+		border-radius: 3px;
+		font-size: 15px;
+		color: #fff;
+		background: #1da1f2;
+		cursor: pointer;
+		margin-bottom: 10px;
+	}
 	.textarea {
 		width: 100%;
 		background: transparent;
