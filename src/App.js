@@ -66,14 +66,14 @@ function App() {
 
 	const [name, setName] = useState()
 	const [username, setUsername] = useState()
-	const [isVerified, setIsVerified] = useState(false)
+	const [isVerified, setIsVerified] = useState(0)
 	const [tweet, setTweet] = useState("Sample fake tweet.")
 	const [avatar, setAvatar] = useState()
 	const [retweets, setRetweets] = useState(0)
 	const [quoteTweets, setQuoteTweets] = useState(0)
 	const [likes, setLikes] = useState(0)
-  const [image, takeScreenshot] = useScreenshot()
 
+  const [image, takeScreenshot] = useScreenshot()
 	const getImage = () => takeScreenshot(tweetRef.current)
 
 	useEffect(() => {
@@ -93,6 +93,22 @@ function App() {
 		/* After creating the new FileReader object, we set up its onload function
 		and then call readAsDataURL() to start the read operation in the background. */
 		reader.readAsDataURL(file)
+	}
+
+	const fetchLastTweet = () => {
+		fetch(`https://typeahead-js-twitter-api-proxy.herokuapp.com/demo/search?q=${username}`)
+			.then(res => res.json())
+			.then(data => {
+				const twitter = data[0]
+				convertImgToBase64(twitter.profile_image_url_https, function(base64Image) {
+					setAvatar(base64Image)
+				})
+				setName(twitter.name)
+				setUsername(twitter.screen_name)
+				setTweet(twitter.status.text)
+				setRetweets(twitter.status.retweet_count)
+				setLikes(twitter.status.favorite_count)
+			})
 	}
 
   return (
