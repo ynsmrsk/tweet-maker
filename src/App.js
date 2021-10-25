@@ -56,7 +56,7 @@ const formatNumber = number => {
 	// Then we return this array as needed.
 	//return number[0] + ',' + number[1]
 	return (
-		number[0] + (number[1] > 100 ? ',' + number[1].slice(0, 1) + ' B' : ' B')
+		number[0] + (number[1] > 100 ? ',' + number[1].slice(0, 1) + ' K' : ' K')
 	)
 }
 
