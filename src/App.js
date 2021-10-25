@@ -78,7 +78,7 @@ function App() {
 
   return (
 		<>
-			<div class="tweet-settings">
+			<div className="tweet-settings">
 				<h3>Tweet Settings</h3>
 				<ul>
 					<li>
@@ -144,11 +144,17 @@ function App() {
 							onChange={e => setLikes(e.target.value)}
 						/>
 					</li>
-					<button>Generate</button>
+					<button onClick={getImage}>Generate</button>
+					{image &&
+						(<div className="download-url">
+							<a href={image} download="tweet.png" ref={downloadRef}>
+								Download Tweet
+							</a>
+						</div>)}
 				</ul>
 			</div>
-			<div class="tweet-container">
-				<div className="tweet">
+			<div className="tweet-container">
+				<div className="tweet" ref={tweetRef}>
 					<div className="tweet-author">
 						{avatar ? <img src={avatar} alt="Profile photo" /> : <AvatarLoader />}
 						<div>
