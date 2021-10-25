@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import './style.scss'
 import { AvatarLoader } from './loaders'
+import { useScreenshot } from 'use-react-screenshot'
 import {
 	ReplyIcon,
 	RetweetIcon,
@@ -41,6 +42,9 @@ const formatNumber = number => {
 }
 
 function App() {
+	const tweetRef = createRef(null)
+	const downloadRef = createRef(null)
+
 	const [name, setName] = useState()
 	const [username, setUsername] = useState()
 	const [isVerified, setIsVerified] = useState(false)
@@ -49,6 +53,14 @@ function App() {
 	const [retweets, setRetweets] = useState(0)
 	const [quoteTweets, setQuoteTweets] = useState(0)
 	const [likes, setLikes] = useState(0)
+  const [image, takeScreenshot] = useScreenshot()
+
+	const getImage = () => takeScreenshot(tweetRef.current)
+
+	useEffect(() => {
+		if (image)
+			downloadRef.current.click()
+	}, [image])
 
 	const handleAvatar = e => {
 		// const file = document.getElementById('input').files[0]
