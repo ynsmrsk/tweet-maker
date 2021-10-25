@@ -179,6 +179,16 @@ function App() {
 							onChange={e => setLikes(e.target.value)}
 						/>
 					</li>
+					<li>
+						<label>Is Verified</label>
+						<select
+							onChange={e => setIsVerified(e.target.value)}
+							defaultValue={isVerified}
+						>
+							<option value="1">Yes</option>
+							<option value="0">No</option>
+						</select>
+					</li>
 					<button onClick={getImage}>Generate</button>
 					{image &&
 						(<div className="download-url">
@@ -189,13 +199,24 @@ function App() {
 				</ul>
 			</div>
 			<div className="tweet-container">
+
+				<div className="fetch-tweet">
+					<input
+						type="text"
+						value={username}
+						placeholder="Type a Twitter username"
+						onChange={e => setUsername(e.target.value)}
+					/>
+					<button onClick={fetchLastTweet}>Fetch last tweet</button>
+				</div>
+
 				<div className="tweet" ref={tweetRef}>
 					<div className="tweet-author">
 						{avatar ? <img src={avatar} alt="Profile photo" /> : <AvatarLoader />}
 						<div>
 							<div className="name">
 								{name || "Name Surname"}
-								{isVerified && <VerifiedIcon width="19" height="19" />}
+								{isVerified == 1 && <VerifiedIcon width="19" height="19" />}
 							</div>
 							<div className="username">@{username || "username"}</div>
 						</div>
