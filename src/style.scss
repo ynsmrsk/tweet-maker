@@ -59,6 +59,22 @@ body {
 			border-color: #4e555a;
 		}
 	}
+	select {
+		width: 100%;
+		background: transparent;
+		border-bottom: 1px solid #2f3336;
+		padding: 10px 0 15px;
+		color: #fff;
+		font-size: 15px;
+		margin-bottom: 40px;
+		&:focus {
+			border-color: #4e555a;
+		}
+		option {
+			color: #000;
+			border: none;
+		}
+	}
 	.textarea {
 		width: 100%;
 		background: transparent;
@@ -92,7 +108,32 @@ body {
 
 .tweet-container {
 	padding: 0 50px;
+	.fetch-tweet {
+		margin-bottom: 30px;
+		width: 100%;
+		display: flex;
+		input {
+			flex: 1;
+			background: #2f3336;
+			height: 40px;
+			line-height: 40px;
+			border-radius: 3px 0 0 3px;
+			color: #fff;
+			padding: 0 15px;
+			font-size: 15px;
+		}
+		button {
+			height: 40px;
+			padding: 0 20px;
+			font-size: 15px;
+			color: #fff;
+			background: #1da1f2;
+			border-radius: 0 3px 3px 0;
+			cursor: pointer;
+		}
+	}
 }
+
 
 .tweet {
 	border: 1px solid #2f3336;
