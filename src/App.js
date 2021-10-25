@@ -10,6 +10,25 @@ import {
 	VerifiedIcon
 } from './icons'
 
+// use-react-screenshot can't get the profile image URL when fetched from an account.
+// So we need to convert this image URL to base64
+function convertImgToBase64(url, callback, outputFormat){
+	var canvas = document.createElement('CANVAS');
+	var ctx = canvas.getContext('2d');
+	var img = new Image;
+	img.crossOrigin = 'Anonymous';
+	img.onload = function(){
+		canvas.height = img.height;
+		canvas.width = img.width;
+	  	ctx.drawImage(img,0,0);
+	  	var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+	  	callback.call(this, dataURL);
+        // Clean up
+	  	canvas = null;
+	};
+	img.src = url;
+}
+
 const formatTweet = tweet => {
 	// Select mentions (eg: @Ynsmrska) and place it in span so we can add styles to it.
 	tweet = tweet
