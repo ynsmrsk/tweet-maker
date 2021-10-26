@@ -2,6 +2,7 @@ import React, { useState, useEffect, createRef } from 'react'
 import './style.scss'
 import { AvatarLoader } from './loaders'
 import { useScreenshot } from 'use-react-screenshot'
+import { language } from './language'
 import {
 	ReplyIcon,
 	RetweetIcon,
@@ -72,9 +73,15 @@ function App() {
 	const [retweets, setRetweets] = useState(0)
 	const [quoteTweets, setQuoteTweets] = useState(0)
 	const [likes, setLikes] = useState(0)
+	const [lang, setLang] = useState("en")
+	const [langText, setLangText] = useState()
 
   const [image, takeScreenshot] = useScreenshot()
 	const getImage = () => takeScreenshot(tweetRef.current)
+
+	useEffect(() => {
+		setLangText(language[lang])
+	}, [lang])
 
 	useEffect(() => {
 		if (image)
@@ -114,10 +121,10 @@ function App() {
   return (
 		<>
 			<div className="tweet-settings">
-				<h3>Tweet Settings</h3>
+				<h3>{langText?.settings}</h3>
 				<ul>
 					<li>
-						<label>Name Surname</label>
+						<label>{langText?.name}</label>
 						<input
 							type="text"
 							className="input"
@@ -126,7 +133,7 @@ function App() {
 						/>
 					</li>
 					<li>
-						<label>Username</label>
+						<label>{langText?.username}</label>
 						<input
 							type="text"
 							className="input"
@@ -162,7 +169,7 @@ function App() {
 						/>
 					</li>
 					<li>
-						<label>Quote Tweets</label>
+						<label>{langText?.quoteTweets}</label>
 						<input
 							type="number"
 							className="input"
@@ -171,7 +178,7 @@ function App() {
 						/>
 					</li>
 					<li>
-						<label>Likes</label>
+						<label>{langText?.likes}</label>
 						<input
 							type="number"
 							className="input"
@@ -180,7 +187,7 @@ function App() {
 						/>
 					</li>
 					<li>
-						<label>Is Verified</label>
+						<label>{langText?.isVerified}</label>
 						<select
 							onChange={e => setIsVerified(e.target.value)}
 							defaultValue={isVerified}
@@ -199,7 +206,10 @@ function App() {
 				</ul>
 			</div>
 			<div className="tweet-container">
-
+				<div className="app-language">
+					<span onClick={() => setLang("en")} className={lang === "en" && "active"}>English</span>
+					<span onClick={() => setLang("tr")} className={lang === "tr" && "active"}>Türkçe</span>
+				</div>
 				<div className="fetch-tweet">
 					<input
 						type="text"
@@ -207,7 +217,7 @@ function App() {
 						placeholder="Type a Twitter username"
 						onChange={e => setUsername(e.target.value)}
 					/>
-					<button onClick={fetchLastTweet}>Fetch last tweet</button>
+					<button onClick={fetchLastTweet}>{langText?.fetchLastTweet}</button>
 				</div>
 
 				<div className="tweet" ref={tweetRef}>
@@ -238,10 +248,10 @@ function App() {
 							<b>{formatNumber(retweets)}</b> Retweets
 						</span>
 						<span>
-							<b>{formatNumber(quoteTweets)}</b> Quote Tweets
+							<b>{formatNumber(quoteTweets)}</b>{" " + langText?.quoteTweets}
 						</span>
 						<span>
-							<b>{formatNumber(likes)}</b> Likes
+							<b>{formatNumber(likes)}</b>{" " + langText?.likes}
 						</span>
 					</div>
 					<div className="tweet-actions">
