@@ -3,7 +3,7 @@
 # Fake Tweet Generator
 Fake Tweet Generator is used to create fake tweets with a simple way.
 
-[project photo]
+<!-- [alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1") -->
 
 ## Built With
 * [React.js](https://reactjs.org/)
