@@ -15,15 +15,15 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 - Tweet hashtags, mentions and links are colored blue.
     ```
     const formatTweet = tweet => {
-	  // Select mentions (eg: @Ynsmrska) and place it in span so we can add styles to it.
-	  tweet = tweet
-		.replace(/@([\w]+)/g, "<span>@$1</span>")
-	  // Same with hashtags with paying attention to Turkish characters.
-		.replace(/#([\wşçöüğıİ]+)/gi, "<span>#$1</span>")
-	  // And links.
-		.replace(/(https?:\/\/[\w\.\/]+)/, "<span>$1</span>")
-	  return tweet
-    }```
+	// Select mentions (eg: @Ynsmrska) and place it in span so we can add styles to it.
+	tweet = tweet
+	.replace(/@([\w]+)/g, "<span>@$1</span>")
+	// Same with hashtags with paying attention to Turkish characters.
+	.replace(/#([\wşçöüğıİ]+)/gi, "<span>#$1</span>")
+	// And links.
+        .replace(/(https?:\/\/[\w\.\/]+)/, "<span>$1</span>")
+      	return tweet
+    }
     
 - Name, Surname, Nickname, Tweet, Profile Photo, Retweets, Quote Tweets and Likes can be adjusted in "Tweet Settings" section.
 - 
