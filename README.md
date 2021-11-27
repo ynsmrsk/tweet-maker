@@ -13,7 +13,7 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 
 ## Project Utilities
 - Tweet hashtags, mentions and links are colored blue.
-    ```
+    ```javascript
     const formatTweet = tweet => {
 	// Select mentions (eg: @Ynsmrska) and place it in span so we can add styles to it.
 	tweet = tweet
@@ -24,7 +24,7 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
         .replace(/(https?:\/\/[\w\.\/]+)/, "<span>$1</span>")
       	return tweet
     }
-    
+   ``` 
 - Name, Surname, Nickname, Tweet, Profile Photo, Retweets, Quote Tweets and Likes can be adjusted in "Tweet Settings" section.
 - 
 - There is a profile photo skeleton showed until user select from locale file.
