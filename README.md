@@ -136,8 +136,9 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 
 - You can select project language.
 
-**language.js**
+
 ```javascript
+// language.js
 const en = {
   settings: "Tweet Settings",
   name: "Name Surname",
@@ -158,10 +159,8 @@ const language = {
 export {
   language
 }
-```
-<br>
-**app.js**
-```javascript
+
+// app.js
 import {
   language
 } from './language'
