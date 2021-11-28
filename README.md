@@ -67,7 +67,7 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  </ContentLoader>
 	)
 	```
-- Retweets, Quote Tweets and Likes are formatted to show in "[Number,Fraction]K" style if entered number is bigger than thousand.
+- Retweets, Quote Tweets and Likes are formatted to show in "[Number,Fraction]K" style if entered number is bigger than thousand. <br>
 **eg: 561,095 => 561K | 67,826 => 67.8K**
 	```javascript
 	const formatNumber = number => {
@@ -112,5 +112,73 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	```
     
 - It is possible to import last tweet from entered Twitter account name.
+	```javascript
+	const fetchLastTweet = () => {
+	  fetch(`https://typeahead-js-twitter-api-proxy.herokuapp.com/demo/search?q=${username}`)
+	    .then(res => res.json())
+	    .then(data => {
+	      const twitter = data[0]
+	      convertImgToBase64(twitter.profile_image_url_https, function (base64Image) {
+		setAvatar(base64Image)
+	      })
+	      setName(twitter.name)
+	      setUsername(twitter.screen_name)
+	      setTweet(twitter.status.text)
+	      setRetweets(twitter.status.retweet_count)
+	      setLikes(twitter.status.favorite_count)
+	    })
+	}
+	
+	{...}
+	
+	<button onClick={fetchLastTweet}>{langText?.fetchLastTweet}</button>
+	```
 
-- You can select project language. 
+- You can select project language.
+
+**language.js**
+```javascript
+const en = {
+  settings: "Tweet Settings",
+  name: "Name Surname",
+  ...
+}
+
+const tr = {
+  settings: "Tweet Ayarları",
+  name: "Ad Soyad",
+  ...
+}
+
+const language = {
+  en,
+  tr
+}
+
+export {
+  language
+}
+```
+<br>
+**app.js**
+```javascript
+import {
+  language
+} from './language'
+
+const [lang, setLang] = useState("en")
+const [langText, setLangText] = useState()
+
+useEffect(() => {
+  setLangText(language[lang])
+}, [lang])
+
+{...}
+
+<h3>{langText?.settings}</h3>
+<ul>
+<li>
+  <label>{langText?.name}</label>
+  
+  {...}
+```
