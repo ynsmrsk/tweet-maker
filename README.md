@@ -15,12 +15,9 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 - Tweet hashtags, mentions and links are colored blue.
     ```javascript
 	const formatTweet = tweet => {
-	  // Select mentions (eg: @elonmusk) and place it in span so we can add styles to it.
 	  tweet = tweet
 	    .replace(/@([\w]+)/g, "<span>@$1</span>")
-	    // Same with hashtags with paying attention to UTF-8 character encoding.
 	    .replace(/#([\wşçöüğıİ]+)/gi, "<span>#$1</span>")
-	    // And links...
 	    .replace(/(https?:\/\/[\w\.\/]+)/, "<span>$1</span>")
 	  return tweet
 	}
@@ -69,10 +66,46 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  </ContentLoader>
 	)
 	```
-- Retweets, Quote Tweets and Likes are formatted to show in "[Number,Fraction]K" style when entered number is bigger than a thousand.
-    For example: 561,095 -> 561K or 67,826 -> 67.8K
+- Retweets, Quote Tweets and Likes are formatted to show in "[Number,Fraction]K" style if entered number is bigger than thousand.
+**eg: 561,095 => 561K | 67,826 => 67.8K**
+	```javascript
+	const formatNumber = number => {
+	  if (!number)
+	    number = 0
+	  if (number < 1000)
+	    return number
+	  number /= 1000
+	  number = String(number).split('.')
+	  return (
+	    number[0] + (number[1] > 100 ? ',' + number[1].slice(0, 1) + ' K' : ' K')
+	  )
+	}
+	```
 - Generated fake tweets automatically downloaded as image.
-    (use-react-screenshot code sample)
+	```javascript
+	import {
+	  useScreenshot
+	} from 'use-react-screenshot'
+
+	const [image, takeScreenshot] = useScreenshot()
+	const getImage = () => takeScreenshot(tweetRef.current)
+
+	useEffect(() => {
+	  if (image)
+	    downloadRef.current.click()
+	}, [image])
+	...
+	<button onClick={getImage}>Generate</button>
+	{image &&
+	(
+	<div className="download-url">
+	  <a href={image} download="tweet.png" ref={downloadRef}>
+	  Download Tweet
+	  </a>
+	</div>
+	)}
+	```
+    
 - It is possible to import last tweet from entered Twitter account name.
 
 - You can select project language. 
