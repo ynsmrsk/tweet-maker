@@ -1,7 +1,7 @@
 # Fake Tweet Generator
 Fake Tweet Generator is used to create fake tweets with a simple way.
 
-![](https://github.com/ynsmrsk/tweet-maker/blob/main/example.png "Tweet Maker Sample Image")
+![](https://github.com/ynsmrsk/tweet-maker/blob/main/example.png "Tweet Maker sample")
 
 ## Built With
 * [React.js](https://reactjs.org/)
@@ -50,8 +50,25 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  </li>
 	  ...
 	```
-- There is a profile photo skeleton showed until user select from locale file.
-    (skeleton photo and code sample)
+- There is an avatar loader skeleton image showed until user change.
+![](https://github.com/ynsmrsk/tweet-maker/blob/main/screenshots/skeleton.png "Skeleton screenshot")
+	```javascript
+	import ContentLoader from "react-content-loader"
+
+	const AvatarLoader = (props) => (
+	  <ContentLoader
+	    speed={2}
+	    width={60}
+	    height={48}
+	    viewBox="0 0 60 48"
+	    backgroundColor="#333"
+	    foregroundColor="#444"
+	    {...props}
+	  >
+	    <circle cx="24" cy="24" r="24" />
+	  </ContentLoader>
+	)
+	```
 - Retweets, Quote Tweets and Likes are formatted to show in "[Number,Fraction]K" style when entered number is bigger than a thousand.
     For example: 561,095 -> 561K or 67,826 -> 67.8K
 - Generated fake tweets automatically downloaded as image.
