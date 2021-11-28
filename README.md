@@ -45,7 +45,8 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	      onChange={e => setUsername(e.target.value)}
 	    />
 	  </li>
-	  ...
+	  
+	  {...}
 	```
 - There is an avatar loader skeleton image showed until user change. <br><br>
 ![](https://github.com/ynsmrsk/tweet-maker/blob/main/screenshots/skeleton.png "Skeleton screenshot")
@@ -94,7 +95,9 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  if (image)
 	    downloadRef.current.click()
 	}, [image])
-	...
+	
+	{...}
+
 	<button onClick={getImage}>Generate</button>
 	{image &&
 	(
@@ -104,6 +107,8 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  </a>
 	</div>
 	)}
+	
+	{...}
 	```
     
 - It is possible to import last tweet from entered Twitter account name.
