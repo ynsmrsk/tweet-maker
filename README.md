@@ -50,7 +50,7 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	  </li>
 	  ...
 	```
-- There is an avatar loader skeleton image showed until user change.
+- There is an avatar loader skeleton image showed until user change.  <cr>
 ![](https://github.com/ynsmrsk/tweet-maker/blob/main/screenshots/skeleton.png "Skeleton screenshot")
 	```javascript
 	import ContentLoader from "react-content-loader"
