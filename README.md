@@ -1,7 +1,7 @@
 # Fake Tweet Generator
 Fake Tweet Generator is used to create fake tweets with a simple way.
 
-![](https://github.com/ynsmrsk/tweet-maker/blob/main/example.png "Tweet Maker sample")
+![](https://github.com/ynsmrsk/tweet-maker/blob/main/screenshots/example.png "Tweet Maker sample")
 
 ## Built With
 * [React.js](https://reactjs.org/)
