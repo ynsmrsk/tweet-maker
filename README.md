@@ -135,49 +135,47 @@ Fake Tweet Generator is used to create fake tweets with a simple way.
 	```
 
 - You can select project language.
+	```javascript
+	// language.js
+	const en = {
+	  settings: "Tweet Settings",
+	  name: "Name Surname",
+	  ...
+	}
 
+	const tr = {
+	  settings: "Tweet Ayarları",
+	  name: "Ad Soyad",
+	  ...
+	}
 
-```javascript
-// language.js
-const en = {
-  settings: "Tweet Settings",
-  name: "Name Surname",
-  ...
-}
+	const language = {
+	  en,
+	  tr
+	}
 
-const tr = {
-  settings: "Tweet Ayarları",
-  name: "Ad Soyad",
-  ...
-}
+	export {
+	  language
+	}
 
-const language = {
-  en,
-  tr
-}
+	// app.js
+	import {
+	  language
+	} from './language'
 
-export {
-  language
-}
+	const [lang, setLang] = useState("en")
+	const [langText, setLangText] = useState()
 
-// app.js
-import {
-  language
-} from './language'
+	useEffect(() => {
+	  setLangText(language[lang])
+	}, [lang])
 
-const [lang, setLang] = useState("en")
-const [langText, setLangText] = useState()
+	{...}
 
-useEffect(() => {
-  setLangText(language[lang])
-}, [lang])
+	<h3>{langText?.settings}</h3>
+	<ul>
+	<li>
+	  <label>{langText?.name}</label>
 
-{...}
-
-<h3>{langText?.settings}</h3>
-<ul>
-<li>
-  <label>{langText?.name}</label>
-  
-  {...}
-```
+	  {...}
+	```
